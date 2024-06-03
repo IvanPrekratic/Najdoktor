@@ -14,12 +14,16 @@ namespace Najdoktor.Model
         public int ID { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
-        public string Specijalizacija { get; set; }
+
+        [ForeignKey(nameof(Specijalizacija))]
+        public int SpecijalizacijaID { get; set; }
+        public Specijalizacija Specijalizacija { get; set; }
         public string Telefon { get; set; }
         public string Email { get; set; }
 
         [ForeignKey(nameof(Bolnica))]
         public int BolnicaID { get; set; }
         public Bolnica Bolnica { get; set; }
+        public string PunoIme => $"{Ime} {Prezime}";
     }
 }

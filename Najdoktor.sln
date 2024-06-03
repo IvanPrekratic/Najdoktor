@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Najdoktor.Web", "Najdoktor\Najdoktor.Web.csproj", "{AE711CD4-EA23-4CEA-8D0B-0F1387D84592}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Najdoktor.Web", "Najdoktor.Web\Najdoktor.Web.csproj", "{AE711CD4-EA23-4CEA-8D0B-0F1387D84592}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Najdoktor.Model", "Najdoktor.Model\Najdoktor.Model.csproj", "{E46CC520-D6B9-413D-8E20-60BDDA911F2C}"
 EndProject

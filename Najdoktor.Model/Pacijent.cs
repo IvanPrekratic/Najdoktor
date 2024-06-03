@@ -15,7 +15,7 @@ namespace Najdoktor.Model
         [Required]
         public string Ime { get; set; }
         [Required]
-        public string Prezime { get; set; }
+        public string Prezime { get; set; } 
         public string Telefon { get; set; }
         [Required]
         public string Email { get; set; }
@@ -24,5 +24,6 @@ namespace Najdoktor.Model
         [ForeignKey(nameof(Grad))]
         public int? GradID { get; set; }
         public Grad? Grad { get; set; }
+        public string PunoIme=> $"{Ime} {Prezime}";
     }
 }
