@@ -1,0 +1,64 @@
+﻿@using Najdoktor.Model
+@model Recenzija
+
+@{
+    ViewData["Title"] = "Recenzija - detalji";
+}
+
+<h2>Detalji o recenziji</h2>
+<hr />
+@if (Model != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <dl class="dl-horizontal">
+                    <dt>
+                        Ime i prezime pacijenta
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Pacijent.ImePrezime)
+                    </dd>
+                    <dt>
+                        Ime i prezime doktora
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Doktor.ImePrezime)
+                    </dd>
+                    <dt>
+                        Mjesto rada doktora
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Doktor.Bolnica.Naziv)
+                    </dd>
+                    <dt>
+                        Specijalizacija doktora
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Doktor.Specijalizacija.NazivSpecijalizacije)
+                    </dd>
+                </dl>
+
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-primary">Uredi</a>
+                </div>
+            </div>
+            <div class="col-8">
+                <h4>Ocjena: <strong>@Html.DisplayFor(model => model.Ocjena)</strong></h4>
+                <h4>Komentar:</h4>
+                <p style="font-size: 20px">
+                    @Html.DisplayFor(model => model.Komentar)
+                </p>
+            </div>
+        </div>
+        
+    </div>
+
+}
+else
+{
+    <div class="alert alert-danger">
+        Nije odabran ispravni ID recenzije.
+    </div>
+
+}

@@ -1,0 +1,47 @@
+﻿@using Najdoktor.Model
+@model Doktor
+
+@{
+	ViewData["Title"] = "Dodavanje novog doktora";
+}
+
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create">
+			<div class="form-group">
+				<label class="control-label">Ime</label>
+				<input asp-for="Ime" class="form-control" />
+				<span asp-validation-for="Ime" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Prezime</label>
+				<input asp-for="Prezime" class="form-control" />
+				<span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+			<div class="form-group">
+                <label class="control-label">Telefon</label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+			<div class="form-group">
+				<label asp-for="Email" class="control-label"></label>
+				<input asp-for="Email" class="form-control" />
+				<span asp-validation-for="Email" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Bolnica</label>
+				<select asp-for="BolnicaID" asp-items="ViewBag.Bolnice" class="form-control"></select>
+				<span asp-validation-for="BolnicaID" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Specijalizacija</label>
+				<select asp-for="SpecijalizacijaID" asp-items="ViewBag.Specijalizacije" class="form-control"></select>
+				<span asp-validation-for="SpecijalizacijaID" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Spremi" class="btn btn-outline-success" />
+			</div>
+		</form>
+	</div>
+</div>

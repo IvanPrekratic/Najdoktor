@@ -1,0 +1,25 @@
+﻿@using Najdoktor.Web.Models
+@model RecenzijaFilterModel
+
+<form action="@Url.Action("RecenzijaSearch")" method="post" class="form-inline" id="recenzijaForm">
+	<div class="row">
+		<div class="col">
+			<div class="form-group">
+				<input asp-for="Grad" placeholder="Grad" class="form-control">
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-group">
+				<input asp-for="Specijalizacija" placeholder="Specijalizacija" class="form-control">
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-group">
+				<input asp-for="Ocjena" placeholder="Ocjena" class="form-control">
+			</div>
+		</div>
+		<div class="col">
+			<button type="button" onClick="filterRecenzija()" class="btn btn-primary m-t-10">Filtriraj</button>
+		</div>
+	</div>
+</form>

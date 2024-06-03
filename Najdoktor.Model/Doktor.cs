@@ -24,6 +24,6 @@ namespace Najdoktor.Model
         [ForeignKey(nameof(Bolnica))]
         public int BolnicaID { get; set; }
         public Bolnica Bolnica { get; set; }
-        public string PunoIme => $"{Ime} {Prezime}";
+        public string ImePrezime => $"{Ime} {Prezime}";
     }
 }

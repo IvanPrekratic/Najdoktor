@@ -22,8 +22,8 @@ namespace Najdoktor.Model
         public string Adresa { get; set; }
 
         [ForeignKey(nameof(Grad))]
-        public int? GradID { get; set; }
-        public Grad? Grad { get; set; }
-        public string PunoIme=> $"{Ime} {Prezime}";
+        public int GradID { get; set; }
+        public Grad Grad { get; set; }
+        public string ImePrezime=> $"{Ime} {Prezime}";
     }
 }

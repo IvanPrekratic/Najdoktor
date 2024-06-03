@@ -28,5 +28,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "Recenzije",
+    pattern: "recenzije",
+    defaults: new { controller = "Korisnik", action = "Index" });
+app.MapControllerRoute(
+    name: "Kreacija recenzije",
+    pattern: "kreiranje-recenzije",
+    defaults: new { controller = "Korisnik", action = "CreateRecenzija" });
 
 app.Run();

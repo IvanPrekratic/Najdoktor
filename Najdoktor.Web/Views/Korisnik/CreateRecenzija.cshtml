@@ -1,0 +1,37 @@
+﻿@using Najdoktor.Model
+@model Recenzija
+
+@{
+	ViewData["Title"] = "Dodavanje nove recenzije";
+}
+
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="CreateRecenzija">
+			<div class="form-group">
+				<label class="control-label">Pacijent</label>
+				<select asp-for="PacijentID" asp-items="ViewBag.Pacijenti" class="form-control"></select>
+				<span asp-validation-for="PacijentID" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Doktor</label>
+				<select asp-for="DoktorID" asp-items="ViewBag.Doktori" class="form-control"></select>
+				<span asp-validation-for="DoktorID" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label class="control-label">Komentar</label>
+				<input asp-for="Komentar" class="form-control" />
+				<span asp-validation-for="Komentar" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Ocjena" class="control-label"></label>
+				<input asp-for="Ocjena" class="form-control" />
+				<span asp-validation-for="Ocjena" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Spremi" class="btn btn-outline-success" />
+			</div>
+		</form>
+	</div>
+</div>

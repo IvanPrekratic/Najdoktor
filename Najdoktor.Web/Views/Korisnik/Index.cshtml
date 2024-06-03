@@ -1,0 +1,71 @@
+﻿@using Najdoktor.Model
+@using Najdoktor.Web.Models
+@model List<Recenzija>
+@{
+    ViewData["Title"] = "Lista recenzija";
+    ViewBag.ActiveTab = 1;
+}
+
+<style>
+    .tab-pane {
+        padding: 20px;
+    }
+</style>
+
+<div style="margin-top: 20px;">
+    <!-- Nav tabs -->
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == 1 ? "active" : "")" href="#recenzije" aria-controls="recenzije" role="tab" data-bs-toggle="tab">Popis recenzija</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == 2 ? "active" : "")" href="#doktori" aria-controls="doktori" role="tab" data-bs-toggle="tab">Popis doktora</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ActiveTab == 3 ? "active" : "")" href="#bolnice" aria-controls="bolnice" role="tab" data-bs-toggle="tab">Popis bolnica</a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <!--RECENZIJE-->
+        <div role="tabpanel" class="tab-pane @(ViewBag.ActiveTab == 1 ? "show active" : "")" id="recenzije">
+            <h4>Popis recenzija</h4>
+            <partial name="_RecenzijaFilter" model="new RecenzijaFilterModel()" />
+            <div id="tableContainer">
+                <partial name="_RecenzijaTable" model="new List<Recenzija>()" />
+            </div>
+        </div>
+
+        <!--DOKTORI-->
+        <div role="tabpanel" class="tab-pane @(ViewBag.ActiveTab == 2 ? "show active" : "")" id="doktori">
+            <h4>Zadatak 5.6 - POST forma s dva parametra</h4>
+            
+        </div>
+
+        <!--BOLNICE-->
+        <div role="tabpanel" class="tab-pane @(ViewBag.ActiveTab == 3 ? "show active" : "")" id="bolnice">
+            <h4>Zadatak 5.7 - POST forma, binding na model</h4>
+            
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(filterRecenzija());
+
+        function filterRecenzija() {
+            var formData = $("#recenzijaForm").serialize();
+            console.log("funkcija");
+            $.ajax({
+                url: "@Url.Action("RecenzijaTable", new RecenzijaFilterModel())",
+                method: "POST",
+                data: formData,
+                success: function (html) {
+                    $("#tableContainer").html(html);
+                }
+            });
+        }
+    </script>
+}

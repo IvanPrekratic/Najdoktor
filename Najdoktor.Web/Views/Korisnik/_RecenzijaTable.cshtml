@@ -1,0 +1,31 @@
+﻿@using Najdoktor.Model;
+@using Najdoktor.Web.Models;
+@model List<Recenzija>
+
+<table style="margin-top: 20px;" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Doktor</th>
+            <th>Specijalizacija</th>
+            <th>Grad</th>
+            <th>Ocjena</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var recenzija in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="RecenzijaDetails" asp-route-id="@recenzija.ID">@recenzija.Doktor.ImePrezime</a>
+                </td>
+                <td>@recenzija.Doktor.Specijalizacija.NazivSpecijalizacije</td>
+                <td>@recenzija.Doktor.Bolnica.Grad.Naziv</td>
+                <td>@recenzija.Ocjena</td>
+                <td>
+                    <a asp-action="RecenzijaDetails" asp-route-id="@recenzija.ID">Detalji</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
