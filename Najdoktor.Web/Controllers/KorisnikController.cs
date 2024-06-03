@@ -4,6 +4,8 @@ using Najdoktor.DAL;
 using Najdoktor.Web.Models;
 using Najdoktor.Model;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using Najdoktor.Models;
 
 namespace Najdoktor.Web.Controllers
 {
@@ -93,6 +95,37 @@ namespace Najdoktor.Web.Controllers
 			return View(recenzija);
 		}
 
+		[ActionName(nameof(EditPacijent))]
+		public IActionResult EditPacijent(int id)
+		{
+			var model = _dbContext.Pacijenti.FirstOrDefault(c => c.ID == id);
+			this.FillDropdownGradovi();
+			if (model == null)
+			{
+				return NotFound();
+			}
+
+
+			return View(model);
+		}
+
+		[HttpPost]
+		[ActionName(nameof(EditPacijent))]
+		public async Task<IActionResult> EditPacijentPost(int id)
+		{
+			var client = _dbContext.Pacijenti.Single(c => c.ID == id);
+			client.Grad = _dbContext.Gradovi.Find(client.GradID);
+			var ok = await this.TryUpdateModelAsync(client);
+
+			if (ok && this.ModelState.IsValid)
+			{
+				_dbContext.SaveChanges();
+				return RedirectToAction(nameof(Index));
+			}
+
+			this.FillDropdownGradovi();
+			return View();
+		}
 
 
 		private void FillDropdownGradovi()
